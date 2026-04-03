@@ -6,7 +6,6 @@
 <title>Dia X — Evento Karen Abecia × UOL EdTech</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET & BASE ───────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -41,10 +40,8 @@ body {
 img { max-width: 100%; display: block; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
 a  { color: inherit; text-decoration: none; }
 
-/* ─── UTILITIES ──────────────────────────────────────────── */
 .tag {
   display: inline-block;
-  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -53,7 +50,6 @@ a  { color: inherit; text-decoration: none; }
 }
 .tag-fire {
   display: inline-block;
-  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -63,7 +59,6 @@ a  { color: inherit; text-decoration: none; }
 .section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
 .section-divider { width: 100%; height: 1px; background: var(--border); }
 
-/* ─── REVEAL ANIMATION ───────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -79,9 +74,6 @@ a  { color: inherit; text-decoration: none; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
 
-/* ═══════════════════════════════════════════════════════════
-   1. HERO
-══════════════════════════════════════════════════════════ */
 #hero {
   position: relative;
   min-height: 100vh;
@@ -145,7 +137,6 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .hero-eyebrow {
-  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.4em;
   text-transform: uppercase;
@@ -195,7 +186,6 @@ a  { color: inherit; text-decoration: none; }
   padding: 10px 24px;
   border: 1px solid var(--border);
   border-radius: 100px;
-  font-size: 0.82rem;
   font-weight: 500;
   color: var(--text);
   background: var(--surface);
@@ -233,16 +223,12 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .hero-scroll-hint span {
-  font-size: calc(0.6rem + 4px);
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--dim);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   2. O QUE É O DIA X
-══════════════════════════════════════════════════════════ */
 #o-que-e {
   padding: 100px 0;
   background: var(--surface);
@@ -326,7 +312,6 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .what-card-num {
-  font-size: calc(0.6rem + 4px);
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -349,9 +334,6 @@ a  { color: inherit; text-decoration: none; }
   line-height: 1.6;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   3. PARA QUEM É
-══════════════════════════════════════════════════════════ */
 #para-quem {
   padding: 100px 0;
   background: var(--bg);
@@ -465,9 +447,6 @@ a  { color: inherit; text-decoration: none; }
   color: var(--mint);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   5. AGENDA — NÚMEROS DO EVENTO
-══════════════════════════════════════════════════════════ */
 #numeros {
   padding: 100px 0;
   background: var(--surface);
@@ -537,7 +516,6 @@ a  { color: inherit; text-decoration: none; }
 .number-big.green  { color: var(--mint); }
 
 .number-label {
-  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -552,9 +530,6 @@ a  { color: inherit; text-decoration: none; }
   line-height: 1.6;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   6. CUIDAMOS DE TUDO
-══════════════════════════════════════════════════════════ */
 #cuidamos {
   padding: 100px 0;
   background: var(--bg);
@@ -595,7 +570,6 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .care-photo-caption {
-  font-size: 0.72rem;
   font-weight: 600;
   color: rgba(255,255,255,0.9);
   letter-spacing: 0.08em;
@@ -691,9 +665,6 @@ a  { color: inherit; text-decoration: none; }
   color: var(--mint);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   7. SLIDER — EVENTOS QUE JÁ ROLARAM
-══════════════════════════════════════════════════════════ */
 #eventos {
   padding: 100px 0;
   background: var(--surface);
@@ -765,7 +736,6 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .slider-caption-tag {
-  font-size: calc(0.58rem + 4px);
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -844,7 +814,6 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .slider-counter {
-  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--dim);
@@ -854,9 +823,6 @@ a  { color: inherit; text-decoration: none; }
   color: var(--mint);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   8. QUEM É KAREN ABECIA
-══════════════════════════════════════════════════════════ */
 #karen {
   padding: 100px 0;
   background: var(--bg);
@@ -980,7 +946,6 @@ a  { color: inherit; text-decoration: none; }
   padding: 7px 14px;
   border: 1px solid var(--border);
   border-radius: 100px;
-  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -994,9 +959,6 @@ a  { color: inherit; text-decoration: none; }
   background: rgba(0,184,126,0.07);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   9. FECHAMENTO
-══════════════════════════════════════════════════════════ */
 #fechamento {
   padding: 120px 0;
   background: var(--surface);
@@ -1074,9 +1036,6 @@ a  { color: inherit; text-decoration: none; }
   height: 16px;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════════════════ */
 footer {
   border-top: 1px solid var(--border);
   padding: 36px 48px;
@@ -1106,9 +1065,21 @@ footer {
   line-height: 1.6;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════════════════ */
+/* PADRÃO WORD 12 / 16px PARA FONTES PEQUENAS */
+.tag,
+.tag-fire,
+.hero-eyebrow,
+.pill-stat,
+.number-label,
+.care-photo-caption,
+.slider-caption-tag,
+.slider-counter,
+.karen-badge,
+.what-card-num,
+.hero-scroll-hint span {
+  font-size: 16px;
+}
+
 @media (max-width: 1024px) {
   .section-wrap { padding: 0 32px; }
   .what-grid { grid-template-columns: 1fr; gap: 40px; }
