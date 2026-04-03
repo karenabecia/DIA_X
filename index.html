@@ -1,26 +1,1664 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .hero-title {
-            font-size: clamp(3.5rem, 9vw, 7rem);
-        }
-        .pill-stat {
-            font-size: 0.95rem;
-        }
-        section h2 {
-            font-size: clamp(2.3rem, 4vw, 3.2rem);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia X — Evento Karen Abecia × UOL EdTech</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ───────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Paleta clara — baseada na referência */
+  --bg:        #FFFFFF;
+  --surface:   #F7F8FA;
+  --surface2:  #EEF0F4;
+  --border:    rgba(0,0,0,0.09);
+  --muted:     #6B7280;
+  --text:      #111827;
+  --dim:       #9CA3AF;
+  /* Accent: Verde */
+  --mint:      #00B87E;
+  --mint-light:#00E5A0;
+  --mint-dark: #007A54;
+  /* Accent secundário */
+  --fire:      #FF5C1A;
+  --amber:     #FF9E1B;
+  --violet:    #7B5CFF;
+  /* Type */
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+a  { color: inherit; text-decoration: none; }
+
+/* ─── UTILITIES ──────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 16px;
+}
+.tag-fire {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin-bottom: 16px;
+}
+.section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+.section-divider { width: 100%; height: 1px; background: var(--border); }
+
+/* ─── REVEAL ANIMATION ───────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ═══════════════════════════════════════════════════════════
+   1. HERO
+══════════════════════════════════════════════════════════ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 80px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* subtle background pattern */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,184,126,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,184,126,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.hero-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 32px;
+  height: 96px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.hero-logo-box img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.hero-plus {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  margin-bottom: 28px;
+  color: var(--text);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 400;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.7;
+  margin: 0 auto 48px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-pill-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.pill-stat {
+  padding: 10px 24px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.pill-stat span {
+  color: var(--mint);
+  font-weight: 700;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.hero-scroll-hint-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--mint), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.35; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+.hero-scroll-hint span {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2. O QUE É O DIA X
+══════════════════════════════════════════════════════════ */
+#o-que-e {
+  padding: 100px 0;
+  background: var(--surface);
+  position: relative;
+}
+
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.what-photo {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+}
+
+.what-photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.what-text h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.what-text h2 em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.what-text p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.what-highlight {
+  border-left: 3px solid var(--mint);
+  padding: 16px 20px;
+  margin: 28px 0;
+  background: rgba(0,184,126,0.06);
+  border-radius: 0 6px 6px 0;
+}
+
+.what-highlight p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.what-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.what-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--mint);
+  padding: 20px 24px;
+  border-radius: 0 6px 6px 0;
+}
+
+.what-card-num {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 6px;
+}
+
+.what-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.what-card-desc {
+  font-size: 0.83rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   3. PARA QUEM É
+══════════════════════════════════════════════════════════ */
+#para-quem {
+  padding: 100px 0;
+  background: var(--bg);
+  position: relative;
+}
+
+.audience-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.audience-photo {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+}
+
+.audience-photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.audience-content h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.audience-content h2 em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.audience-content > p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.audience-badge {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid rgba(0,184,126,0.25);
+  padding: 24px 28px;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,184,126,0.08);
+}
+
+.audience-badge-num {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: var(--mint);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.audience-badge-text strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.audience-badge-text span {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.audience-separator {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.audience-note {
+  background: rgba(0,184,126,0.06);
+  border: 1px solid rgba(0,184,126,0.18);
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+
+.audience-note p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.audience-note p span {
+  color: var(--mint);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   5. AGENDA — NÚMEROS DO EVENTO
+══════════════════════════════════════════════════════════ */
+#numeros {
+  padding: 100px 0;
+  background: var(--surface);
+  position: relative;
+}
+
+.numbers-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.numbers-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.numbers-header h2 em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.numbers-header p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.number-card {
+  background: var(--bg);
+  padding: 36px 24px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border);
+  border-radius: 8px;
+  transition: border-top-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.number-card:hover {
+  border-top-color: var(--mint);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.number-big {
+  font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.number-big.accent { color: var(--mint); }
+.number-big.green  { color: var(--mint); }
+
+.number-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+
+.number-desc {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   6. CUIDAMOS DE TUDO
+══════════════════════════════════════════════════════════ */
+#cuidamos {
+  padding: 100px 0;
+  background: var(--bg);
+  position: relative;
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.care-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+}
+
+.care-photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.care-photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  border-radius: 0 0 8px 8px;
+}
+
+.care-photo-caption {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.care-text h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.care-text h2 em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.care-text > p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.care-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.care-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  border-left: 3px solid transparent;
+  transition: border-left-color 0.25s, box-shadow 0.25s;
+}
+
+.care-item:hover {
+  border-left-color: var(--mint);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.care-item-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mint);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.care-item-text strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 3px;
+  color: var(--text);
+}
+
+.care-item-text span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.care-bottom-line {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border: 1px solid rgba(0,184,126,0.2);
+  background: rgba(0,184,126,0.05);
+  border-radius: 6px;
+}
+
+.care-bottom-line p {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.care-bottom-line p span {
+  color: var(--mint);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   7. SLIDER — EVENTOS QUE JÁ ROLARAM
+══════════════════════════════════════════════════════════ */
+#eventos {
+  padding: 100px 0;
+  background: var(--surface);
+  position: relative;
+}
+
+.events-header {
+  margin-bottom: 48px;
+}
+
+.events-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.events-header h2 em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.events-header p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Slider: adapts to image proportions, no crop */
+.slider-outer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #1a1a1a;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider-slide {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+}
+
+.slider-slide img {
+  width: 100%;
+  max-height: 70vh;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.slider-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 40px 28px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 70%, transparent 100%);
+}
+
+.slider-caption-tag {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mint-light);
+  margin-bottom: 6px;
+}
+
+.slider-caption-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.slider-btn {
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.slider-btn:hover {
+  border-color: var(--mint);
+  background: rgba(0,184,126,0.08);
+}
+
+.slider-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--muted);
+  fill: none;
+  transition: stroke 0.2s;
+}
+
+.slider-btn:hover svg {
+  stroke: var(--mint);
+}
+
+.slider-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--surface2);
+  cursor: pointer;
+  transition: background 0.3s, width 0.3s;
+}
+
+.slider-dot.active {
+  background: var(--mint);
+  width: 20px;
+  border-radius: 3px;
+}
+
+.slider-counter {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.slider-counter span {
+  color: var(--mint);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   8. QUEM É KAREN ABECIA
+══════════════════════════════════════════════════════════ */
+#karen {
+  padding: 100px 0;
+  background: var(--bg);
+  position: relative;
+}
+
+.karen-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 72px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.karen-photo-wrap {
+  position: sticky;
+  top: 40px;
+}
+
+.karen-photo-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+}
+
+.karen-photo-frame img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.karen-text {}
+
+.karen-text h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.karen-text > p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 20px;
+}
+
+.karen-quote {
+  border-left: 3px solid var(--mint);
+  padding: 16px 20px;
+  margin: 24px 0;
+  background: rgba(0,184,126,0.05);
+  border-radius: 0 6px 6px 0;
+}
+
+.karen-quote p {
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.karen-credentials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.karen-cred {
+  background: var(--surface);
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--border);
+  border-radius: 6px;
+  transition: border-top-color 0.3s;
+}
+
+.karen-cred:hover {
+  border-top-color: var(--mint);
+}
+
+.karen-cred-num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--mint);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.karen-cred-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.karen-cred-desc {
+  font-size: 0.73rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.karen-badges-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.karen-badge {
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.karen-badge.highlight {
+  border-color: rgba(0,184,126,0.35);
+  color: var(--mint-dark);
+  background: rgba(0,184,126,0.07);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   9. FECHAMENTO
+══════════════════════════════════════════════════════════ */
+#fechamento {
+  padding: 120px 0;
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle decorative shape */
+#fechamento::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,184,126,0.08) 0%, transparent 70%);
+  bottom: -200px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.closing-content {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.closing-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 24px;
+}
+
+.closing-title {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1.0;
+  margin-bottom: 48px;
+  color: var(--text);
+}
+
+.closing-title em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.closing-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 52px;
+  background: var(--mint);
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.25s, transform 0.2s;
+  text-decoration: none;
+}
+
+.closing-cta:hover {
+  background: var(--mint-dark);
+  transform: translateY(-1px);
+}
+
+.closing-cta-arrow {
+  width: 16px;
+  height: 16px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.footer-brand span {
+  color: var(--mint);
+}
+
+.footer-meta {
+  font-size: 0.72rem;
+  color: var(--dim);
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .section-wrap { padding: 0 32px; }
+  .what-grid { grid-template-columns: 1fr; gap: 40px; }
+  .what-grid .what-photo { order: -1; }
+  .audience-layout { grid-template-columns: 1fr; gap: 40px; }
+  .audience-layout .audience-photo { order: -1; }
+  .karen-grid { grid-template-columns: 1fr; gap: 48px; }
+  .karen-photo-wrap { position: relative; top: 0; max-width: 440px; }
+  .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  .care-grid { grid-template-columns: 1fr; gap: 40px; }
+  .care-photo img { height: 360px; }
+}
+
+@media (max-width: 768px) {
+  .section-wrap { padding: 0 20px; }
+  #hero { padding: 64px 20px; }
+  .hero-logos { flex-direction: column; gap: 16px; }
+  .hero-plus { display: none; }
+  .hero-logo-box { width: 100%; max-width: 260px; }
+  .hero-pill-row { flex-direction: column; align-items: center; }
+  .numbers-grid { grid-template-columns: 1fr 1fr; }
+  .karen-credentials { grid-template-columns: 1fr; }
+  .what-photo img { height: 320px; }
+  .audience-photo img { height: 320px; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-meta { text-align: center; }
+  #o-que-e, #para-quem, #numeros, #cuidamos, #eventos, #karen, #fechamento {
+    padding: 72px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .numbers-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-    <div class="hero-title">Hero Title</div>
-    <div class="pill-stat">Pill Stat</div>
-    <section>
-        <h2>Section Title</h2>
-    </section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     1. HERO
+══════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <!-- Logos -->
+  <div class="hero-logos reveal">
+    <div class="hero-logo-box">
+      <img src="./logo-dia-x.png" alt="Logo Dia X" loading="eager">
+    </div>
+    <div class="hero-plus">&times;</div>
+    <div class="hero-logo-box">
+      <img src="./logo-uol-edtech.png" alt="Logo UOL EdTech" loading="eager">
+    </div>
+  </div>
+
+  <p class="hero-eyebrow reveal reveal-delay-1">Proposta de parceria &mdash; 2026</p>
+
+  <h1 class="hero-title reveal reveal-delay-2">
+    Uma parceria<br>que <em>vale</em> pra<br>todo mundo.
+  </h1>
+
+  <p class="hero-subtitle reveal reveal-delay-3">
+    O Dia X é um evento presencial organizado por Karen Abecia, reunindo profissionais da maior comunidade de Excel do Brasil em um espaço que faz total sentido para essa parceria.
+  </p>
+
+  <div class="hero-pill-row reveal reveal-delay-4">
+    <div class="pill-stat"><span>70</span> alunos DashWay</div>
+    <div class="pill-stat"><span>20</span> vagas para a UOL EdTech</div>
+    <div class="pill-stat"><span>9h–18h</span> &mdash; 1 dia</div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="hero-scroll-hint-line"></div>
+    <span>rolar</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     2. O QUE É O DIA X
+══════════════════════════════════════════════════════════ -->
+<section id="o-que-e">
+  <div class="section-wrap">
+    <div class="tag reveal">02 &mdash; O Evento</div>
+    <div class="what-grid">
+
+      <div class="what-photo reveal reveal-delay-1">
+        <img src="./Fotos/fotos_karen_palco_7.jpg" alt="Karen Abecia no palco — Dia X" loading="lazy">
+      </div>
+
+      <div class="what-text reveal reveal-delay-2">
+        <h2>Abrir mentes.<br>Mostrar <em>possibilidades</em>.</h2>
+        <p>
+          O Dia X é um evento presencial criado para mostrar, na prática, as oportunidades de crescimento que muitos profissionais ainda não enxergaram &mdash; dentro do ambiente onde já trabalham hoje.
+        </p>
+        <p>
+          Focado nas skills que fazem diferença no mercado atual: dados, dashboards e inteligência artificial aplicada. Um dia inteiro para quem quer se destacar em um mercado cada vez mais competitivo.
+        </p>
+        <div class="what-highlight">
+          <p>
+            Cada participante sai enxergando possibilidades reais de se destacar &mdash; com as ferramentas que já tem, mas com uma visão completamente nova.
+          </p>
+        </div>
+
+        <div class="what-cards">
+          <div class="what-card">
+            <div class="what-card-num">01 &mdash; Formato</div>
+            <div class="what-card-title">Palestras + Workshops Imersivos</div>
+            <div class="what-card-desc">Conteúdo ao vivo, interativo e direto ao ponto. Cada sessão construída para gerar insight imediato.</div>
+          </div>
+          <div class="what-card">
+            <div class="what-card-num">02 &mdash; Temas</div>
+            <div class="what-card-title">Excel, Dashboards e IA com Dados</div>
+            <div class="what-card-desc">O que há de mais atual na fronteira entre habilidades analíticas e inteligência artificial aplicada ao cotidiano corporativo.</div>
+          </div>
+          <div class="what-card">
+            <div class="what-card-num">03 &mdash; Propósito</div>
+            <div class="what-card-title">Se destacar no mercado atual</div>
+            <div class="what-card-desc">O participante não sai com um certificado. Sai com uma nova forma de ver o próprio trabalho &mdash; e com clareza para agir.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. PARA QUEM É ESSE EVENTO
+══════════════════════════════════════════════════════════ -->
+<section id="para-quem">
+  <div class="section-wrap">
+    <div class="tag-fire reveal">03 &mdash; Público</div>
+    <div class="audience-layout">
+
+      <div class="audience-content reveal reveal-delay-1">
+        <h2>Alunos DashWay:<br>a comunidade mais <em>engajada</em> do Brasil.</h2>
+        <p>
+          Os participantes do Dia X são alunos da DashWay &mdash; a maior comunidade sobre Dashboards em Excel do Brasil. Pessoas que já investiram no próprio crescimento e estão em busca de se destacar.
+        </p>
+
+        <div class="audience-badge">
+          <div style="display: flex; align-items: baseline; gap: 0.5rem; flex-shrink: 0;">
+            <div class="audience-badge-num">+10.000</div>
+            <strong style="font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text);">Alunos DashWay</strong>
+          </div>
+          <div class="audience-separator"></div>
+          <div class="audience-badge-text">
+            <span>Evento para premiar engajamento: o Dia X é uma forma de reconhecer e celebrar os alunos mais ativos da comunidade DashWay &mdash; um evento exclusivo e de alto impacto para quem mais merece.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="audience-photo reveal reveal-delay-2">
+        <img src="./Fotos/fotos_karen_palco_5.jpg" alt="Karen Abecia com os participantes — Dia X" loading="lazy">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     5. AGENDA DIA X
+══════════════════════════════════════════════════════════ -->
+<section id="numeros">
+  <div class="section-wrap">
+    <div class="numbers-header reveal">
+      <div class="tag">05 &mdash; Agenda</div>
+      <h2>Agenda <em>Dia X</em></h2>
+      <p>Um evento compacto, planejado para gerar máximo impacto em um único dia.</p>
+    </div>
+
+    <div class="numbers-grid">
+      <div class="number-card reveal reveal-delay-1">
+        <div class="number-big accent">70</div>
+        <div class="number-label">Vagas para alunos</div>
+        <div class="number-desc">Acesso restrito para alunos DashWay &mdash; ambiente de alta qualidade e engajamento real.</div>
+      </div>
+      <div class="number-card reveal reveal-delay-2">
+        <div class="number-big green">20</div>
+        <div class="number-label">Vagas UOL EdTech</div>
+        <div class="number-desc">Convites exclusivos para que a UOL EdTech traga clientes, parceiros ou colaboradores.</div>
+      </div>
+      <div class="number-card reveal reveal-delay-3">
+        <div class="number-big" style="font-size: clamp(1.6rem, 3vw, 2.6rem);">9h&ndash;18h</div>
+        <div class="number-label">Horário</div>
+        <div class="number-desc">Agenda compacta e intensa, com 1h30 de intervalo para almoço. Sem tempo morto.</div>
+      </div>
+      <div class="number-card reveal reveal-delay-4">
+        <div class="number-big" style="font-size: clamp(1.2rem, 2.2vw, 1.9rem); line-height:1.2;">Data a<br>definir</div>
+        <div class="number-label">Data do evento</div>
+        <div class="number-desc">A data será confirmada em conjunto com a UOL EdTech, de acordo com a disponibilidade do espaço.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     6. CUIDAMOS DE TUDO
+══════════════════════════════════════════════════════════ -->
+<section id="cuidamos">
+  <div class="section-wrap">
+    <div class="tag reveal">06 &mdash; Operação</div>
+    <div class="care-grid">
+      <div class="care-photo reveal reveal-delay-1">
+        <img src="./Fotos/Fotos_credenciamento_1.jpg" alt="Credenciamento do evento Dia X" loading="lazy">
+        <div class="care-photo-overlay">
+          <div class="care-photo-caption">Credenciamento — nossa equipe</div>
+        </div>
+      </div>
+
+      <div class="care-text reveal reveal-delay-2">
+        <h2>Vocês cedem o espaço.<br><em>A gente cuida do resto.</em></h2>
+        <p>
+          Nossa equipe assume 100% da operação &mdash; do credenciamento ao encerramento. Zero preocupação da sua parte.
+        </p>
+
+        <div class="care-items">
+          <div class="care-item">
+            <div class="care-item-dot"></div>
+            <div class="care-item-text">
+              <strong>Credenciamento 100% por nossa conta</strong>
+              <span>Equipe completa para receber e organizar cada participante antes do início.</span>
+            </div>
+          </div>
+          <div class="care-item">
+            <div class="care-item-dot"></div>
+            <div class="care-item-text">
+              <strong>Produção e logística do dia</strong>
+              <span>Curadoria de conteúdo, condução do evento, gestão de agenda e suporte aos participantes.</span>
+            </div>
+          </div>
+          <div class="care-item">
+            <div class="care-item-dot"></div>
+            <div class="care-item-text">
+              <strong>Sem coffee break</strong>
+              <span>Servimos apenas água e café &mdash; simples, sem gerar demanda para a estrutura do espaço.</span>
+            </div>
+          </div>
+          <div class="care-item">
+            <div class="care-item-dot"></div>
+            <div class="care-item-text">
+              <strong>Comunicação com os participantes</strong>
+              <span>Confirmação de presença, envio de informações e suporte pré-evento &mdash; tudo gerenciado pela nossa equipe.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     7. SLIDER — REGISTROS DOS EVENTOS
+══════════════════════════════════════════════════════════ -->
+<section id="eventos">
+  <div class="section-wrap">
+    <div class="events-header reveal">
+      <div class="tag-fire">07 &mdash; Histórico</div>
+      <h2>Eventos que<br>já <em>rolaram</em>.</h2>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div class="slider-outer" id="slider">
+        <div class="slider-track" id="sliderTrack">
+
+          <div class="slider-slide">
+            <img src="./Fotos/Fotos_Karen_palco_2.png" alt="Karen Abecia no palco — Evento presencial" loading="lazy">
+            <div class="slider-caption">
+              <div class="slider-caption-tag">Evento Presencial</div>
+              <div class="slider-caption-title">Karen no palco: presença, energia e conexão com o público.</div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <img src="./Fotos/fotos_karen_palco_3.jpg" alt="Karen Abecia apresentando para a plateia" loading="lazy">
+            <div class="slider-caption">
+              <div class="slider-caption-tag">Workshop Ao Vivo</div>
+              <div class="slider-caption-title">Metodologia na prática &mdash; aprendizado imersivo em tempo real.</div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <img src="./Fotos/fotos_karen_palco_4.jpg" alt="Plateia engajada no evento" loading="lazy">
+            <div class="slider-caption">
+              <div class="slider-caption-tag">Engajamento do Público</div>
+              <div class="slider-caption-title">Plateia presente e participativa &mdash; não é evento de cadeira, é de transformação.</div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <img src="./Fotos/fotos_karen_palco_6.jpg" alt="Karen Abecia durante palestra" loading="lazy">
+            <div class="slider-caption">
+              <div class="slider-caption-tag">Palestra de Alto Impacto</div>
+              <div class="slider-caption-title">Conteúdo denso, entregue de forma acessível e visualmente poderosa.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="slider-controls">
+        <button class="slider-btn" id="sliderPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div style="display:flex; align-items:center; gap:24px;">
+          <div class="slider-dots" id="sliderDots"></div>
+          <div class="slider-counter">
+            <span id="sliderCurrent">1</span> / <span id="sliderTotal">4</span>
+          </div>
+        </div>
+
+        <button class="slider-btn" id="sliderNext" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     8. QUEM É KAREN ABECIA
+══════════════════════════════════════════════════════════ -->
+<section id="karen">
+  <div class="section-wrap">
+    <div class="tag reveal">08 &mdash; Quem organiza</div>
+    <div class="karen-grid">
+      <div class="karen-photo-wrap reveal reveal-delay-1">
+        <div class="karen-photo-frame">
+          <img src="./Fotos/foto-karen-sobre.jpg" alt="Karen Abecia" loading="lazy">
+        </div>
+      </div>
+
+      <div class="karen-text reveal reveal-delay-2">
+        <h2>Karen Abecia</h2>
+
+        <div class="karen-quote">
+          <p>"Eu acredito que Excel &amp; Dados não precisa ser chato. Desde 2003 venho criando e aperfeiçoando uma metodologia que faz as pessoas aprenderem Excel de forma divertida e com resultados acima da média."</p>
+        </div>
+
+        <div class="karen-credentials">
+          <div class="karen-cred">
+            <div class="karen-cred-num">+20.000</div>
+            <div class="karen-cred-label">Alunos formados</div>
+            <div class="karen-cred-desc">A maior comunidade de Excel e Dashboards do Brasil.</div>
+          </div>
+          <div class="karen-cred">
+            <div class="karen-cred-num">+20 anos</div>
+            <div class="karen-cred-label">De experiência</div>
+            <div class="karen-cred-desc">Trabalhando com dados em ambiente corporativo.</div>
+          </div>
+          <div class="karen-cred">
+            <div class="karen-cred-num">PT/EN/ES</div>
+            <div class="karen-cred-label">Conteúdos em 3 idiomas</div>
+            <div class="karen-cred-desc">Alcance e base internacional com raiz brasileira.</div>
+          </div>
+          <div class="karen-cred">
+            <div class="karen-cred-num">MVP</div>
+            <div class="karen-cred-label">Microsoft MVP</div>
+            <div class="karen-cred-desc">Reconhecimento oficial da Microsoft como referência global.</div>
+          </div>
+        </div>
+
+        <div class="karen-badges-row">
+          <span class="karen-badge highlight">Microsoft MVP</span>
+          <span class="karen-badge highlight">Instrutora UOL EdTech</span>
+          <span class="karen-badge">Instrutora LinkedIn Learning</span>
+          <span class="karen-badge">DashWay</span>
+          <span class="karen-badge">Excel Expert</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     9. FECHAMENTO
+══════════════════════════════════════════════════════════ -->
+<section id="fechamento">
+  <div class="section-wrap">
+    <div class="closing-content">
+      <div class="closing-eyebrow reveal">09 &mdash; A Proposta</div>
+
+      <h2 class="closing-title reveal reveal-delay-1">
+        Vamos fazer<br>isso <em>acontecer</em>?
+      </h2>
+
+      <div class="reveal reveal-delay-2">
+        <a href="mailto:karen@t2t.com.br" class="closing-cta">
+          Falar com Karen
+          <svg class="closing-cta-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">DASH<span>way</span></div>
+  <div class="footer-meta">
+    Dia X &mdash; Proposta de Parceria<br>
+    Karen Abecia &times; UOL EdTech &mdash; 2026
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT — SLIDER + SCROLL REVEAL
+══════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── SCROLL REVEAL ─────────────────────────────────────── */
+  var revealEls = document.querySelectorAll('.reveal');
+
+  function checkReveal() {
+    var windowH = window.innerHeight;
+    for (var i = 0; i < revealEls.length; i++) {
+      var el = revealEls[i];
+      var rect = el.getBoundingClientRect();
+      if (rect.top < windowH - 60) {
+        el.classList.add('visible');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', checkReveal, { passive: true });
+  window.addEventListener('resize', checkReveal, { passive: true });
+  setTimeout(checkReveal, 100);
+
+  /* ── SLIDER ────────────────────────────────────────────── */
+  var track      = document.getElementById('sliderTrack');
+  var prevBtn    = document.getElementById('sliderPrev');
+  var nextBtn    = document.getElementById('sliderNext');
+  var dotsWrap   = document.getElementById('sliderDots');
+  var counterEl  = document.getElementById('sliderCurrent');
+  var totalEl    = document.getElementById('sliderTotal');
+  var slides     = track ? track.querySelectorAll('.slider-slide') : [];
+  var total      = slides.length;
+  var current    = 0;
+  var autoTimer  = null;
+
+  if (totalEl) totalEl.textContent = total;
+
+  // Build dots
+  for (var d = 0; d < total; d++) {
+    var dot = document.createElement('div');
+    dot.className = 'slider-dot' + (d === 0 ? ' active' : '');
+    dot.setAttribute('data-index', d);
+    dotsWrap.appendChild(dot);
+  }
+
+  function goTo(index) {
+    if (index < 0) index = total - 1;
+    if (index >= total) index = 0;
+    current = index;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    if (counterEl) counterEl.textContent = current + 1;
+    var dots = dotsWrap.querySelectorAll('.slider-dot');
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('active', i === current);
+    }
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(function() {
+      goTo(current + 1);
+    }, 4500);
+  }
+
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      stopAuto();
+      goTo(current - 1);
+      startAuto();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      stopAuto();
+      goTo(current + 1);
+      startAuto();
+    });
+  }
+
+  if (dotsWrap) {
+    dotsWrap.addEventListener('click', function(e) {
+      var dot = e.target.closest('.slider-dot');
+      if (dot) {
+        stopAuto();
+        goTo(parseInt(dot.getAttribute('data-index'), 10));
+        startAuto();
+      }
+    });
+  }
+
+  // Touch / swipe support
+  var touchStartX = 0;
+  var sliderEl = document.getElementById('slider');
+  if (sliderEl) {
+    sliderEl.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    sliderEl.addEventListener('touchend', function(e) {
+      var diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 40) {
+        stopAuto();
+        goTo(diff > 0 ? current + 1 : current - 1);
+        startAuto();
+      }
+    }, { passive: true });
+  }
+
+  goTo(0);
+  startAuto();
+
+})();
+</script>
 </body>
 </html>
