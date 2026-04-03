@@ -10,7 +10,6 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* Paleta clara — baseada na referência */
   --bg:        #FFFFFF;
   --surface:   #F7F8FA;
   --surface2:  #EEF0F4;
@@ -18,15 +17,12 @@
   --muted:     #6B7280;
   --text:      #111827;
   --dim:       #9CA3AF;
-  /* Accent: Verde */
   --mint:      #00B87E;
   --mint-light:#00E5A0;
   --mint-dark: #007A54;
-  /* Accent secundário */
   --fire:      #FF5C1A;
   --amber:     #FF9E1B;
   --violet:    #7B5CFF;
-  /* Type */
   --sans: 'Space Grotesk', system-ui, sans-serif;
 }
 
@@ -100,7 +96,6 @@ a  { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--border);
 }
 
-/* subtle background pattern */
 #hero::before {
   content: '';
   position: absolute;
@@ -238,7 +233,7 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .hero-scroll-hint span {
-  font-size: 0.6rem;
+  font-size: calc(0.6rem + 4px);
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -331,7 +326,7 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .what-card-num {
-  font-size: 0.6rem;
+  font-size: calc(0.6rem + 4px);
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -730,7 +725,6 @@ a  { color: inherit; text-decoration: none; }
   line-height: 1.7;
 }
 
-/* Slider: adapts to image proportions, no crop */
 .slider-outer {
   position: relative;
   overflow: hidden;
@@ -771,7 +765,7 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .slider-caption-tag {
-  font-size: 0.58rem;
+  font-size: calc(0.58rem + 4px);
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -897,8 +891,6 @@ a  { color: inherit; text-decoration: none; }
   display: block;
 }
 
-.karen-text {}
-
 .karen-text h2 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
@@ -1012,7 +1004,6 @@ a  { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-/* subtle decorative shape */
 #fechamento::before {
   content: '';
   position: absolute;
@@ -1156,11 +1147,7 @@ footer {
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     1. HERO
-══════════════════════════════════════════════════════════ -->
 <section id="hero">
-  <!-- Logos -->
   <div class="hero-logos reveal">
     <div class="hero-logo-box">
       <img src="./logo-dia-x.png" alt="Logo Dia X" loading="eager">
@@ -1174,7 +1161,7 @@ footer {
   <p class="hero-eyebrow reveal reveal-delay-1">Proposta de parceria &mdash; 2026</p>
 
   <h1 class="hero-title reveal reveal-delay-2">
-    Uma parceria<br>que <em>vale</em> pra<br>todo mundo.
+    Uma parceria<br>que <em>VALE MUITO</em> pra<br>todo mundo.
   </h1>
 
   <p class="hero-subtitle reveal reveal-delay-3">
@@ -1193,9 +1180,6 @@ footer {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     2. O QUE É O DIA X
-══════════════════════════════════════════════════════════ -->
 <section id="o-que-e">
   <div class="section-wrap">
     <div class="tag reveal">02 &mdash; O Evento</div>
@@ -1244,9 +1228,6 @@ footer {
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     3. PARA QUEM É ESSE EVENTO
-══════════════════════════════════════════════════════════ -->
 <section id="para-quem">
   <div class="section-wrap">
     <div class="tag-fire reveal">03 &mdash; Público</div>
@@ -1280,9 +1261,6 @@ footer {
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     5. AGENDA DIA X
-══════════════════════════════════════════════════════════ -->
 <section id="numeros">
   <div class="section-wrap">
     <div class="numbers-header reveal">
@@ -1318,9 +1296,6 @@ footer {
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     6. CUIDAMOS DE TUDO
-══════════════════════════════════════════════════════════ -->
 <section id="cuidamos">
   <div class="section-wrap">
     <div class="tag reveal">06 &mdash; Operação</div>
@@ -1376,9 +1351,6 @@ footer {
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     7. SLIDER — REGISTROS DOS EVENTOS
-══════════════════════════════════════════════════════════ -->
 <section id="eventos">
   <div class="section-wrap">
     <div class="events-header reveal">
@@ -1451,9 +1423,6 @@ footer {
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     8. QUEM É KAREN ABECIA
-══════════════════════════════════════════════════════════ -->
 <section id="karen">
   <div class="section-wrap">
     <div class="tag reveal">08 &mdash; Quem organiza</div>
@@ -1508,9 +1477,6 @@ footer {
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     9. FECHAMENTO
-══════════════════════════════════════════════════════════ -->
 <section id="fechamento">
   <div class="section-wrap">
     <div class="closing-content">
@@ -1532,7 +1498,6 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">DASH<span>way</span></div>
   <div class="footer-meta">
@@ -1541,14 +1506,10 @@ footer {
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     JAVASCRIPT — SLIDER + SCROLL REVEAL
-══════════════════════════════════════════════════════════ -->
 <script>
 (function() {
   'use strict';
 
-  /* ── SCROLL REVEAL ─────────────────────────────────────── */
   var revealEls = document.querySelectorAll('.reveal');
 
   function checkReveal() {
@@ -1566,7 +1527,6 @@ footer {
   window.addEventListener('resize', checkReveal, { passive: true });
   setTimeout(checkReveal, 100);
 
-  /* ── SLIDER ────────────────────────────────────────────── */
   var track      = document.getElementById('sliderTrack');
   var prevBtn    = document.getElementById('sliderPrev');
   var nextBtn    = document.getElementById('sliderNext');
@@ -1580,7 +1540,6 @@ footer {
 
   if (totalEl) totalEl.textContent = total;
 
-  // Build dots
   for (var d = 0; d < total; d++) {
     var dot = document.createElement('div');
     dot.className = 'slider-dot' + (d === 0 ? ' active' : '');
@@ -1638,7 +1597,6 @@ footer {
     });
   }
 
-  // Touch / swipe support
   var touchStartX = 0;
   var sliderEl = document.getElementById('slider');
   if (sliderEl) {
